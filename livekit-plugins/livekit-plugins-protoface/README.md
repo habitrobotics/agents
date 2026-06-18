@@ -1,6 +1,6 @@
 # Protoface plugin for LiveKit Agents
 
-Support for [Protoface](https://protoface.ai/) virtual avatars.
+Support for [Protoface](https://protoface.com/) virtual avatars.
 
 Protoface hosts realtime talking faces for LiveKit rooms. Your LiveKit agent owns the
 conversation pipeline; Protoface joins the room as an avatar participant, receives the
@@ -35,18 +35,20 @@ export LIVEKIT_API_SECRET="..."
 from livekit.agents import Agent, AgentSession, RoomOutputOptions
 from livekit.plugins import protoface
 
-session = AgentSession()
 
-avatar = protoface.AvatarSession(
-    avatar_id="av_stock_001",
-)
-await avatar.start(session, room=ctx.room)
+async def entrypoint(ctx):
+    session = AgentSession()
 
-await session.start(
-    agent=Agent(instructions="Talk to me!"),
-    room=ctx.room,
-    room_output_options=RoomOutputOptions(audio_enabled=False),
-)
+    avatar = protoface.AvatarSession(
+        avatar_id="av_stock_001",
+    )
+    await avatar.start(session, room=ctx.room)
+
+    await session.start(
+        agent=Agent(instructions="Talk to me!"),
+        room=ctx.room,
+        room_output_options=RoomOutputOptions(audio_enabled=False),
+    )
 ```
 
 `av_stock_001` is a stable Protoface stock avatar ID available to every account. You can

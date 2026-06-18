@@ -1,7 +1,7 @@
 # LiveKit Protoface Avatar Agent
 
 This example demonstrates how to create a realtime Protoface avatar using
-[Protoface](https://protoface.ai/).
+[Protoface](https://protoface.com/).
 
 ## Usage
 
