@@ -1,6 +1,5 @@
 """Protoface avatar plugin for LiveKit Agents."""
 
-from .api import ProtofaceAPI
 from .avatar import DEFAULT_STOCK_AVATAR_ID, AvatarSession
 from .errors import ProtofaceException
 from .version import __version__
@@ -8,7 +7,6 @@ from .version import __version__
 __all__ = [
     "DEFAULT_STOCK_AVATAR_ID",
     "AvatarSession",
-    "ProtofaceAPI",
     "ProtofaceException",
     "__version__",
 ]
