@@ -1,16 +1,16 @@
 # LiveKit Protoface Avatar Agent
 
-This example demonstrates how to create a realtime Protoface avatar using
-[Protoface](https://protoface.com/).
+This example demonstrates how to create a realtime [Protoface](https://protoface.com/)
+avatar with LiveKit Agents.
 
 ## Usage
 
 - Update the environment:
 
 ```bash
-# Protoface config
+# Protoface config. PROTOFACE_AVATAR_ID is optional and defaults to av_stock_001.
 export PROTOFACE_API_KEY="..."
-export PROTOFACE_AVATAR_ID="av_stock_001"  # optional; defaults to av_stock_001
+export PROTOFACE_AVATAR_ID="av_stock_001"
 
 # Google config
 export GOOGLE_API_KEY="..."

@@ -3,7 +3,7 @@ import os
 
 from dotenv import load_dotenv
 
-from livekit.agents import Agent, AgentServer, AgentSession, JobContext, RoomOutputOptions, cli
+from livekit.agents import Agent, AgentServer, AgentSession, JobContext, cli
 from livekit.plugins import google, protoface
 
 logger = logging.getLogger("protoface-avatar-example")
@@ -17,10 +17,7 @@ server = AgentServer()
 @server.rtc_session()
 async def entrypoint(ctx: JobContext):
     session = AgentSession(
-        llm=google.realtime.RealtimeModel(
-            model="gemini-3.1-flash-live-preview",
-            voice="Puck",
-        ),
+        llm=google.realtime.RealtimeModel(voice="Charon"),
         resume_false_interruption=False,
     )
 
@@ -30,10 +27,11 @@ async def entrypoint(ctx: JobContext):
     await avatar.start(session, room=ctx.room)
 
     await session.start(
-        agent=Agent(instructions="You are a helpful realtime voice assistant."),
+        agent=Agent(instructions="Talk to me!"),
         room=ctx.room,
-        room_output_options=RoomOutputOptions(audio_enabled=False),
     )
+
+    session.generate_reply(instructions="say hello to the user")
 
 
 if __name__ == "__main__":
